@@ -25,6 +25,21 @@
     .contact-email{left:57%;top:90.4%;width:39%;height:3.0%}
     .page2{margin-top:0}
     .footer-note{max-width:1024px;margin:0 auto;padding:10px 14px;font:12px/1.4 Arial,Helvetica,sans-serif;color:#555;text-align:center;background:#fff}
+
+    .site-nav{
+      position:absolute;left:2%;right:2%;top:7.8%;height:4.8%;
+      z-index:10;display:flex;justify-content:center;align-items:center;gap:0;
+      font:700 12px/1 Arial,Helvetica,sans-serif;
+    }
+    .site-nav a{
+      color:transparent;text-decoration:none;display:block;height:100%;
+      min-width:10%;text-align:center;
+    }
+    .footer-links{
+      max-width:1024px;margin:0 auto;padding:8px 12px 14px;
+      font:12px/1.5 Arial,Helvetica,sans-serif;text-align:center;background:#fff;
+    }
+    .footer-links a{color:#555;text-decoration:none;margin:0 7px}
     @media (min-width:1025px){body{background:#f2f4f7}.page{box-shadow:0 0 0 1px #e6e6e6}}
   </style>
 </head>
@@ -32,6 +47,17 @@
   <main aria-label="MS Kitchen Service website">
     <section class="page" aria-label="MS Kitchen Service home page">
       <img src="images/page-1.png" alt="MS Kitchen Service - Chimney, Hob, Cooktop and Microwave Oven service across Delhi and NCR">
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-label="Home">Home</a>
+        <a href="about.html" aria-label="About Us">About</a>
+        <a href="services.html" aria-label="Services">Services</a>
+        <a href="brands.html" aria-label="Brands">Brands</a>
+        <a href="areas.html" aria-label="Service Areas">Areas</a>
+        <a href="reviews.html" aria-label="Customer Reviews">Reviews</a>
+        <a href="contact.html" aria-label="Contact Us">Contact</a>
+      </nav>
+
       <a class="hit top-phone" href="tel:+919811547139" aria-label="Call MS Kitchen Service"></a>
       <a class="hit top-email" href="mailto:Ajayt9113@gmail.com" aria-label="Email MS Kitchen Service"></a>
       <a class="hit hero-call" href="tel:+919811547139" aria-label="Call now"></a>
@@ -47,5 +73,9 @@
       <img src="images/page-2-about-us.png" alt="About MS Kitchen Service - 12 plus years experience, 20000 plus satisfied customers, Delhi and NCR service area">
     </section>
   </main>
+  <div class="footer-links" aria-label="Legal links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+  </div>
 </body>
 </html>
