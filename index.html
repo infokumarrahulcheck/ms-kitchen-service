@@ -25,22 +25,22 @@
     .contact-email{left:57%;top:90.4%;width:39%;height:3.0%}
 
     /* Covers the old name printed inside the original logo image. */
-    .logo-name-cover{position:absolute;left:13.5%;top:8.0%;width:28%;height:2.8%;background:#fff;z-index:6;pointer-events:none}
+    .logo-name-cover{position:absolute;left:10%;top:8.15%;width:30%;height:2.65%;background:#fff;z-index:6;pointer-events:none}
 
-    /* The original hamburger icon is part of the artwork; this invisible button makes it functional. */
-    .menu-toggle{position:absolute;right:2.0%;top:1.8%;width:7.0%;height:6.5%;z-index:20;cursor:pointer;opacity:0}
-    .menu-label{position:absolute;right:2.0%;top:1.8%;width:7.0%;height:6.5%;z-index:19;cursor:pointer}
-    .menu-panel{display:none;position:absolute;right:2.0%;top:8.0%;width:300px;max-width:88%;z-index:30;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:10px;border:1px solid #e5e7eb;line-height:1.2}
+    /* The original hamburger icon is part of the artwork; this transparent button makes it functional. */
+    .menu-toggle{position:absolute;right:1.2%;top:1.2%;width:8.5%;height:7.5%;z-index:100;cursor:pointer;opacity:0}
+    .menu-panel{display:none;position:fixed;right:24px;top:92px;width:300px;max-width:calc(100vw - 32px);z-index:1000;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.28);padding:10px;border:1px solid #e5e7eb;line-height:1.2}
+    .menu-panel.open{display:block}
     .menu-panel a{display:block;padding:13px 14px;color:#061d34;text-decoration:none;font:700 15px/1.2 Arial,Helvetica,sans-serif;border-radius:8px}
     .menu-panel a:hover,.menu-panel a:focus{background:#f2f4f7}
     .menu-close{display:block;text-align:right;padding:5px 8px 8px;color:#777;font:700 13px/1 Arial,Helvetica,sans-serif;cursor:pointer}
-    #menu-toggle:checked ~ .menu-panel{display:block}
 
     .page2{margin-top:0}
     .footer-links{max-width:1024px;margin:0 auto;padding:8px 12px 14px;font:12px/1.5 Arial,Helvetica,sans-serif;text-align:center;background:#fff}
     .footer-links a{color:#555;text-decoration:none;margin:0 7px}
     @media (max-width:600px){
-      .menu-panel{right:3%;top:8%;width:280px}
+      .menu-toggle{right:1%;top:1%;width:10%;height:8%}
+      .menu-panel{right:16px;top:76px;width:280px}
       .menu-panel a{padding:12px 13px;font-size:14px}
     }
     @media (min-width:1025px){body{background:#f2f4f7}.page{box-shadow:0 0 0 1px #e6e6e6}}
@@ -53,10 +53,9 @@
 
       <div class="logo-name-cover" aria-hidden="true"></div>
 
-      <input id="menu-toggle" class="menu-toggle" type="checkbox" aria-label="Open website menu">
-      <label for="menu-toggle" class="menu-label" aria-label="Open website menu"></label>
-      <nav class="menu-panel" aria-label="Main navigation">
-        <label for="menu-toggle" class="menu-close">✕ Close</label>
+      <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Open website menu" aria-expanded="false"></button>
+      <nav id="menu-panel" class="menu-panel" aria-label="Main navigation">
+        <button type="button" class="menu-close" aria-label="Close menu">✕ Close</button>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="services.html">Services</a>
@@ -83,6 +82,18 @@
       <img src="images/page-2-about-us.png" alt="About MS Kitchen Service - 12 plus years experience, 20000 plus satisfied customers, Delhi and NCR service area">
     </section>
   </main>
+  <script>
+    (function(){
+      var toggle=document.getElementById('menu-toggle');
+      var panel=document.getElementById('menu-panel');
+      var close=panel.querySelector('.menu-close');
+      function setOpen(open){ panel.classList.toggle('open',open); toggle.setAttribute('aria-expanded',open?'true':'false'); }
+      toggle.addEventListener('click',function(e){ e.preventDefault(); setOpen(!panel.classList.contains('open')); });
+      close.addEventListener('click',function(){ setOpen(false); });
+      document.addEventListener('click',function(e){ if(panel.classList.contains('open') && !panel.contains(e.target) && e.target!==toggle){ setOpen(false); } });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ setOpen(false); } });
+    })();
+  </script>
   <div class="footer-links" aria-label="Legal links">
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms &amp; Conditions</a>
